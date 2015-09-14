@@ -5,33 +5,36 @@ from __future__ import unicode_literals
 AUTHOR = u'Rafael S. Calsaverini'
 SITENAME = u'Entropy maximizer'
 SITEURL = ''
-SITESUBTITLE = u"Trapped at a local maximum."
+SITESUBTITLE = u"Trapped in a local maximum."
 SITEURL = u'http://rcalsaverini.github.io'
 RELATIVE_URLS = True
 SHOW_ARTICLE_AUTHOR = True
 
 PATH = 'content'
-
 TIMEZONE = 'America/Sao_Paulo'
-
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
 
-FEED_RSS = "atom.rss"
+FEED_RSS = "rss.xml"
+FEED_ATOM = "atom.xml"
+DISPLAY_PAGES_ON_MENU = True
 
-EMAIL_ADDRESSS = "mailto:rafael.calsaverini+pelican@gmail.com"
+COLOPHON = True
+COLOPHON_TITLE = u"Trapped in a local maximum"
+COLOPHON_CONTENT = u"Bayesian hierarchical modeling is a statistical model written in multiple levels (hierarchical form) that estimates the parameters of the posterior distribution using the Bayesian method.[1] The sub-models combine to form the hierarchical model, and the Bayes’ theorem is used to integrate them with the observed data, and account."
+
 GITHUB_ADDRESS = "http://github.com/rcalsaverini"
-SO_ADDRESS = "http://stackoverflow.com/users/114388/rafael-s-calsaverini"
 TWITTER_ADDRESS = "http://twitter.com/rcalsaverini"
 FB_ADDRESS = "https://www.facebook.com/rafael.calsaverini/"
-PROFILE_IMAGE_URL = "https://www.gravatar.com/avatar/9ed01afca2cc6c4d7d0c4d134fe5bde4?s=328&d=identicon&r=PG"
+
 LICENSE_URL = "https://creativecommons.org/licenses/by-sa/3.0/"
 LICENSE_NAME = "Creative Commons BY-SA 3.0"
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 2
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 PLUGIN_PATHS = ["plugins", "./plugins"]
-PLUGINS = ['scholdoc_reader']
+PLUGINS = ['madoko']
 DISQUS_SITENAME = "entropic"
+

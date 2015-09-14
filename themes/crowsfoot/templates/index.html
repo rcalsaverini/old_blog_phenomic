@@ -24,6 +24,7 @@
         </div><!-- /.postinfo -->
 
         <div class="postsummary"> {{ article.summary }} </div>
+        <div class="article"> <div class="truncate"> {{' '.join(article.content.split()[0:100])}}</div> </div>
     </li>
     {% endfor %}
 

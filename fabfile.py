@@ -18,14 +18,9 @@ def build(theme):
     """Build local version of site"""
     local('pelican -s pelicanconf.py -t {theme} -o {output}'.format(theme=theme, output=env.deploy_path))
 
-def rebuild():
-    """`clean` then `build`"""
-    clean()
-    build()
-
-def regenerate():
+def regenerate(theme):
     """Automatically regenerate site upon file modification"""
-    local('pelican -r -s pelicanconf.py -t {theme}'.format(theme=env.theme))
+    local('pelican -r -s pelicanconf.py -t {theme}'.format(theme=theme))
 
 def serve():
     """Serve site at http://localhost:8000/"""

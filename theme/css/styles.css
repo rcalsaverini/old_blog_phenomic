@@ -183,6 +183,14 @@ sub {
     font-size: 1em;
 }
 
+.article .truncated {
+  height: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 /* Footnotes. */
 
 .article .footnote {

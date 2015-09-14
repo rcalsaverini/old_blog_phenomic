@@ -1,240 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Entropy maximizer</title><link href="http://rcalsaverini.github.io/" rel="alternate"></link><link href="http://rcalsaverini.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://rcalsaverini.github.io/</id><updated>2010-08-03T23:55:00-03:00</updated><entry><title>Bayesian Hierarchical Models</title><link href="http://rcalsaverini.github.io/bayesian-hierarchical-models.html" rel="alternate"></link><updated>2010-08-03T23:55:00-03:00</updated><author><name>Rafael S. Calsaverini</name></author><id>tag:rcalsaverini.github.io,2010-08-03:bayesian-hierarchical-models.html</id><summary type="html">&lt;!DOCTYPE html&gt;
-&lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 7]&gt;         &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 8]&gt;         &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt;
-&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class="no-js"&gt; &lt;!--&lt;![endif]--&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
-  &lt;meta name="generator" content="scholpandoc"&gt;
-  &lt;meta name="viewport" content="width=device-width"&gt;
-  
-  &lt;title&gt;&lt;/title&gt;
-  &lt;style type="text/css"&gt;code{white-space: pre;}&lt;/style&gt;
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"&gt;&lt;/script&gt;
-  &lt;style type="text/css"&gt;
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code &gt; span.kw { color: #007020; font-weight: bold; }
-code &gt; span.dt { color: #902000; }
-code &gt; span.dv { color: #40a070; }
-code &gt; span.bn { color: #40a070; }
-code &gt; span.fl { color: #40a070; }
-code &gt; span.ch { color: #4070a0; }
-code &gt; span.st { color: #4070a0; }
-code &gt; span.co { color: #60a0b0; font-style: italic; }
-code &gt; span.ot { color: #007020; }
-code &gt; span.al { color: #ff0000; font-weight: bold; }
-code &gt; span.fu { color: #06287e; }
-code &gt; span.er { color: #ff0000; font-weight: bold; }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class="scholmd-container"&gt;
-&lt;div class="scholmd-main"&gt;
-&lt;div class="scholmd-content"&gt;
-&lt;hr /&gt;
-&lt;p&gt;I have a difficulty to understand functional programming concepts that I can’t put to some very simple and natural use (natural for me, of course). I need to find the perfect simple example to implement to finally understand something. And I’m not a computer scientist, so things like parsers and compilers have very little appeal to me (probably because I don’t understand them…). I’m a physicist, so this drives me to look for physical problems that can be implemented in Haskell so I can understand some concepts.&lt;/p&gt;
-&lt;p&gt;Monad transformers still eludes me. But I think I finally got the perfect subject were I can understand them: stochastic processes! First some book keeping:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="kw"&gt;import &lt;/span&gt;&lt;span class="dt"&gt;Control.Monad.State&lt;/span&gt;
-&lt;span class="kw"&gt;import &lt;/span&gt;&lt;span class="dt"&gt;Control.Monad&lt;/span&gt;
-&lt;span class="kw"&gt;import &lt;/span&gt;&lt;span class="dt"&gt;Control.Monad.Rand&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script type="text/x-mathjax-config"&gt;
-MathJax.Hub.Config({
-    tex2jax: {
-      processClass: "math"
-    },
-    TeX: {
-        TagSide: "left",
-        TagIndent: "1.2em",
-        equationNumbers: {
-            autoNumber: "AMS"
-        },
-        Macros: {
-            ensuremath: ["#1",1],
-            textsf: ["\\mathsf{\\text{#1}}",1],
-            texttt: ["\\mathtt{\\text{#1}}",1]
-        }
-    },
-    "HTML-CSS": { 
-        scale: 100,
-        availableFonts: ["TeX"], 
-        preferredFont: "TeX",
-        webFont: "TeX",
-        imageFont: "TeX",
-        EqnChunk: 1000
-    }
-});
-&lt;/script&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</summary><category term="Bayesian modelling"></category><category term="Hierarchical models"></category></entry><entry><title>Stochastic Processes as Monad Transformers</title><link href="http://rcalsaverini.github.io/stochastic-processes-as-monad-transformers.html" rel="alternate"></link><updated>2010-08-03T23:55:00-03:00</updated><author><name>Rafael S. Calsaverini</name></author><id>tag:rcalsaverini.github.io,2010-08-03:stochastic-processes-as-monad-transformers.html</id><summary type="html">&lt;!DOCTYPE html&gt;
-&lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 7]&gt;         &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 8]&gt;         &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt;
-&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class="no-js"&gt; &lt;!--&lt;![endif]--&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
-  &lt;meta name="generator" content="scholpandoc"&gt;
-  &lt;meta name="viewport" content="width=device-width"&gt;
-  
-  &lt;title&gt;&lt;/title&gt;
-  &lt;style type="text/css"&gt;code{white-space: pre;}&lt;/style&gt;
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"&gt;&lt;/script&gt;
-  &lt;style type="text/css"&gt;
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code &gt; span.kw { color: #007020; font-weight: bold; }
-code &gt; span.dt { color: #902000; }
-code &gt; span.dv { color: #40a070; }
-code &gt; span.bn { color: #40a070; }
-code &gt; span.fl { color: #40a070; }
-code &gt; span.ch { color: #4070a0; }
-code &gt; span.st { color: #4070a0; }
-code &gt; span.co { color: #60a0b0; font-style: italic; }
-code &gt; span.ot { color: #007020; }
-code &gt; span.al { color: #ff0000; font-weight: bold; }
-code &gt; span.fu { color: #06287e; }
-code &gt; span.er { color: #ff0000; font-weight: bold; }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class="scholmd-container"&gt;
-&lt;div class="scholmd-main"&gt;
-&lt;div class="scholmd-content"&gt;
-&lt;hr /&gt;
-&lt;p&gt;I have a difficulty to understand functional programming concepts that I can’t put to some very simple and natural use (natural for me, of course). I need to find the perfect simple example to implement to finally understand something. And I’m not a computer scientist, so things like parsers and compilers have very little appeal to me (probably because I don’t understand them…). I’m a physicist, so this drives me to look for physical problems that can be implemented in Haskell so I can understand some concepts.&lt;/p&gt;
-&lt;p&gt;Monad transformers still eludes me. But I think I finally got the perfect subject were I can understand them: stochastic processes! First some book keeping:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="kw"&gt;import &lt;/span&gt;&lt;span class="dt"&gt;Control.Monad.State&lt;/span&gt;
-&lt;span class="kw"&gt;import &lt;/span&gt;&lt;span class="dt"&gt;Control.Monad&lt;/span&gt;
-&lt;span class="kw"&gt;import &lt;/span&gt;&lt;span class="dt"&gt;Control.Monad.Rand&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, stochastic processes have characteristics related to two different monads. In one hand, they are dynamical processes, and the way to implement dynamics in Haskell is with state monads. For example, if I want to iterate the logistic map: 
-&lt;span class="math scholmd-math-display" style="display: block;"&gt;\[
-\begin{equation}
-\label{logistic}
-  \displaystyle x_{t+1} = \alpha x_t\left(1-x_t\right)
-\end{equation}
-\]&lt;/span&gt;
- I could do the following:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;  f ::&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt;
-  f x &lt;span class="fu"&gt;=&lt;/span&gt; &lt;span class="dv"&gt;4&lt;/span&gt;&lt;span class="fu"&gt;*&lt;/span&gt;x&lt;span class="fu"&gt;*&lt;/span&gt;(&lt;span class="dv"&gt;1&lt;/span&gt;&lt;span class="fu"&gt;-&lt;/span&gt;x)
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Entropy maximizer</title><link href="http://rcalsaverini.github.io/" rel="alternate"></link><link href="http://rcalsaverini.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://rcalsaverini.github.io/</id><updated>2015-08-03T23:55:00-03:00</updated><entry><title>Stochastic Processes as Monad Transformers</title><link href="http://rcalsaverini.github.io/stochastic-processes-as-monad-transformers.html" rel="alternate"></link><updated>2015-08-03T23:55:00-03:00</updated><author><name>Rafael S. Calsaverini</name></author><id>tag:rcalsaverini.github.io,2015-08-03:stochastic-processes-as-monad-transformers.html</id><summary type="html">
+&lt;hr  class="madoko" data-line="1"&gt;
 
-&lt;span class="ot"&gt;  logistic ::&lt;/span&gt; &lt;span class="dt"&gt;State&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt;
-  logistic &lt;span class="fu"&gt;=&lt;/span&gt; &lt;span class="kw"&gt;do&lt;/span&gt; x0 &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; get
-        &lt;span class="kw"&gt;let&lt;/span&gt; x1 &lt;span class="fu"&gt;=&lt;/span&gt; f x
+&lt;p data-line="3"&gt;&lt;span data-line="3"&gt;&lt;/span&gt;I have a difficulty to understand functional programming concepts that I can’t put to some very simple and natural use (natural for me, of course). I need to find the perfect simple example to implement to finally understand something. And I’m not a computer scientist, so things like parsers and compilers have very little appeal to me (probably because I don’t understand them…). I’m a physicist, so this drives me to look for physical problems that can be implemented in Haskell so I can understand some concepts.
+&lt;/p&gt;
+&lt;p class="indent" data-line="6"&gt;&lt;span data-line="6"&gt;&lt;/span&gt;Monad transformers still eludes me. But I think I finally got the perfect subject were I can understand them: stochastic processes! First some book keeping:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="8" data-line-code="9" &gt;&lt;code data-line="9"&gt;import Control.Monad.State
+import Control.Monad
+import Control.Monad.Rand&lt;/code&gt;&lt;/pre&gt;
+&lt;p class="para-continue" data-line="14"&gt;&lt;span data-line="14"&gt;&lt;/span&gt;Now, stochastic processes have characteristics related to two different monads. In one hand, they are dynamical processes, and the way to implement dynamics in Haskell is with state monads. For example, if I want to iterate the logistic map:
+&lt;/p&gt;
+&lt;div id="logistic" class="equation para-block" data-line="16" style="line-adjust:0"&gt;&lt;span data-line="16"&gt;&lt;/span&gt;&lt;span class="equation-before"&gt;&lt;span class="equation-label"&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;span data-line="16"&gt;&lt;/span&gt;
+
+&lt;div class="mathdisplay para-block input-math"   data-line="17" style="line-adjust:0"&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="mathdisplay math-display"  &gt;\[  \displaystyle x_{t+1} = \alpha x_t\left(1-x_t\right)
+\]&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p data-line="20"&gt;&lt;span data-line="20"&gt;&lt;/span&gt;I could do the following:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="22" data-line-code="23" &gt;&lt;code data-line="23"&gt;  f :: Double -&amp;gt; Double
+  f x = 4*x*(1-x)
+
+  logistic :: State Double Double
+  logistic = do x0 &amp;lt;- get
+        let x1 = f x
         put x1
         return x1
-&lt;span class="ot"&gt;  runLogistic ::&lt;/span&gt; &lt;span class="dt"&gt;State&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; [&lt;span class="dt"&gt;Double&lt;/span&gt;]
-  runLogistic n x0&lt;span class="fu"&gt;=&lt;/span&gt; evalState (replicateM n logistic) x0&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running this on ghci would give you, for example:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;  &lt;span class="fu"&gt;*&lt;/span&gt;&lt;span class="dt"&gt;Main&lt;/span&gt;&lt;span class="fu"&gt;&amp;gt;&lt;/span&gt; runLogistic &lt;span class="dv"&gt;5&lt;/span&gt; &lt;span class="fl"&gt;0.2&lt;/span&gt;
-  [&lt;span class="fl"&gt;0.6400000000000001&lt;/span&gt;,&lt;span class="fl"&gt;0.9215999999999999&lt;/span&gt;,&lt;span class="fl"&gt;0.28901376000000045&lt;/span&gt;, &lt;span class="fl"&gt;0.8219392261226504&lt;/span&gt;,&lt;span class="fl"&gt;0.5854205387341&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So we can make the loose correspondence: dynamical system ↔ state monad.&lt;/p&gt;
-&lt;p&gt;On the other hand, stochastic processes are compositions of random variables, and this is done with the Rand monad (found in &lt;code&gt;Control.Monad.Random&lt;/code&gt;). As an example, the Box-Muller formula tells us that, if I have two inpendent random variables &lt;span class="math scholmd-math-inline"&gt;\(x\)&lt;/span&gt; and &lt;span class="math scholmd-math-inline"&gt;\(y\)&lt;/span&gt;, distributed uniformly between in the &lt;span class="math scholmd-math-inline"&gt;\([0, 1]\)&lt;/span&gt; interval, then, the expression: 
-&lt;span class="math scholmd-math-display" style="display: block;"&gt;\[
-\begin{equation*}
-  \displaystyle \sqrt{-2\log(x)}\cos(2\pi y)
-\end{equation*}
-\]&lt;/span&gt;
- will be normally distributed. We can write then:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;boxmuller ::&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt;
-boxmuller x y &lt;span class="fu"&gt;=&lt;/span&gt; sqrt(&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="dv"&gt;2&lt;/span&gt;&lt;span class="fu"&gt;*&lt;/span&gt;log x)&lt;span class="fu"&gt;*&lt;/span&gt;cos(&lt;span class="dv"&gt;2&lt;/span&gt;&lt;span class="fu"&gt;*&lt;/span&gt;pi&lt;span class="fu"&gt;*&lt;/span&gt;y)
+  runLogistic :: State Double [Double]
+  runLogistic n x0= evalState (replicateM n logistic) x0&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="35"&gt;&lt;span data-line="35"&gt;&lt;/span&gt;Running this on ghci would give you, for example:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="37" data-line-code="38" &gt;&lt;code data-line="38"&gt;  *Main&amp;gt; runLogistic 5 0.2
+  [0.6400000000000001,0.9215999999999999,0.28901376000000045, 0.8219392261226504,0.5854205387341]&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="42"&gt;&lt;span data-line="42"&gt;&lt;/span&gt;So we can make the loose correspondence: dynamical system ↔ state monad.
+&lt;/p&gt;
+&lt;p class="indent para-continue" data-line="44"&gt;&lt;span data-line="44"&gt;&lt;/span&gt;On the other hand, stochastic processes are compositions of random variables, and this is done with the Rand monad (found in &lt;span data-line="44"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;Control.Monad.Random&lt;/code&gt;&lt;span data-line="44"&gt;&lt;/span&gt;). As an example, the Box-Muller formula tells us that, if I have two inpendent random variables &lt;span data-line="44"&gt;&lt;/span&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="math-inline"&gt;$x$&lt;/span&gt;&lt;/span&gt;&lt;span data-line="44"&gt;&lt;/span&gt; and &lt;span data-line="44"&gt;&lt;/span&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="math-inline"&gt;$y$&lt;/span&gt;&lt;/span&gt;&lt;span data-line="44"&gt;&lt;/span&gt;, distributed uniformly between in the &lt;span data-line="44"&gt;&lt;/span&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="math-inline"&gt;$[0, 1]$&lt;/span&gt;&lt;/span&gt;&lt;span data-line="44"&gt;&lt;/span&gt; interval, then, the expression:
+&lt;/p&gt;
+&lt;div id="box_muller" class="equation para-block" data-line="46" style="line-adjust:0"&gt;&lt;span data-line="46"&gt;&lt;/span&gt;&lt;span class="equation-before"&gt;&lt;span class="equation-label"&gt;(2)&lt;/span&gt;&lt;/span&gt;&lt;span data-line="46"&gt;&lt;/span&gt;
 
-&lt;span class="ot"&gt;normal ::&lt;/span&gt; &lt;span class="dt"&gt;Rand&lt;/span&gt; &lt;span class="dt"&gt;StdGen&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt;  &lt;span class="co"&gt;-- normally distributed&lt;/span&gt;
-normal &lt;span class="fu"&gt;=&lt;/span&gt; &lt;span class="kw"&gt;do&lt;/span&gt; x &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; getRandom
-            y &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; getRandom
-            return &lt;span class="fu"&gt;$&lt;/span&gt; boxmuller x y
+&lt;div class="mathdisplay para-block input-math"   data-line="47" style="line-adjust:0"&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="mathdisplay math-display"  &gt;\[  \displaystyle \sqrt{-2\log(x)}\cos(2\pi y)
+\]&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p data-line="50"&gt;&lt;span data-line="50"&gt;&lt;/span&gt;will be normally distributed. We can write then:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="52" data-line-code="53" &gt;&lt;code data-line="53"&gt;boxmuller :: Double -&amp;gt; Double -&amp;gt; Double
+boxmuller x y = sqrt(-2*log x)*cos(2*pi*y)
 
-normals n &lt;span class="fu"&gt;=&lt;/span&gt; replicateM n normal &lt;span class="co"&gt;-- n independent samples from normal&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running this function we get what we need:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="fu"&gt;*&lt;/span&gt;&lt;span class="dt"&gt;Main&lt;/span&gt;&lt;span class="fu"&gt;&amp;gt;&lt;/span&gt; (evalRand &lt;span class="fu"&gt;$&lt;/span&gt; normals &lt;span class="dv"&gt;5&lt;/span&gt;) (mkStdGen &lt;span class="dv"&gt;0&lt;/span&gt;) &lt;span class="fu"&gt;=&lt;/span&gt;
-[&lt;span class="fl"&gt;0.1600255836730147&lt;/span&gt;,&lt;span class="fl"&gt;0.1575360140445035&lt;/span&gt;,&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="fl"&gt;1.595627933129274&lt;/span&gt;,
-&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="fl"&gt;0.18196791439834512&lt;/span&gt;,&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="fl"&gt;1.082222285056746&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So what is a stochastic process? In very rough terms: is a dynamical system with random variables. So we need a way to make the &lt;code&gt;Rand&lt;/code&gt; monad to talk nicely with the &lt;code&gt;State&lt;/code&gt; monad. The way to do this is to use a monad transformer, in this case, the &lt;code&gt;StateT&lt;/code&gt; transformer. Monad transformers allows you to combine the functionalities of two different monads. In the case of the &lt;code&gt;StateT&lt;/code&gt; monads, they allow you to add a state to any other monad you want. In our case, we want to wrap the &lt;code&gt;Rand&lt;/code&gt; monad inside a &lt;code&gt;StateT&lt;/code&gt; transformer and work with things of type:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;foo ::&lt;/span&gt;  &lt;span class="dt"&gt;StateT&lt;/span&gt; s (&lt;span class="dt"&gt;Rand&lt;/span&gt; &lt;span class="dt"&gt;StdGen&lt;/span&gt;) r&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This type represent a monad that can store a state with type s, like the state monad, and can generate random variables of type r, like the rand monad. In general we would have a type&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;foo2 ::&lt;/span&gt;(&lt;span class="dt"&gt;MonadTrans&lt;/span&gt; t, &lt;span class="dt"&gt;Monad&lt;/span&gt; m) &lt;span class="ot"&gt;=&amp;gt;&lt;/span&gt; t m a&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In this case, &lt;code&gt;t = StateT s&lt;/code&gt; and &lt;code&gt;m = Rand StdGen&lt;/code&gt;. The class &lt;code&gt;MonadTrans&lt;/code&gt; is defined in &lt;code&gt;Control.Monad.Trans&lt;/code&gt;, and provides the function:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;lift ::&lt;/span&gt; (&lt;span class="dt"&gt;MonadTrans&lt;/span&gt; t, &lt;span class="dt"&gt;Monad&lt;/span&gt; m) &lt;span class="ot"&gt;=&amp;gt;&lt;/span&gt; m a &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; t m a&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In this case, &lt;code&gt;t&lt;/code&gt; is itself a monad, and can be treated like one through the code. It works like this: inside a do expression you can use the &lt;code&gt;lift&lt;/code&gt; function to access the inner monad. Things called with lift will operate in the inner monad. Things called without &lt;code&gt;lift&lt;/code&gt; will operate in the outer monad.&lt;/p&gt;
-&lt;p&gt;So, suppose we want to simulate this very simple process: 
-&lt;span class="math scholmd-math-display" style="display: block;"&gt;\[
-\begin{equation*}
-  \displaystyle x_{t+1} = x_{t} + \eta_t
-\end{equation*}
-\]&lt;/span&gt;
- where &lt;span class="math scholmd-math-inline"&gt;\(\eta_t\)&lt;/span&gt; is drawn from a normal distribution. We would do:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;randomWalk ::&lt;/span&gt; &lt;span class="dt"&gt;StateT&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; (&lt;span class="dt"&gt;Rand&lt;/span&gt; &lt;span class="dt"&gt;StdGen&lt;/span&gt;) &lt;span class="dt"&gt;Double&lt;/span&gt;
-randomWalk &lt;span class="fu"&gt;=&lt;/span&gt; &lt;span class="kw"&gt;do&lt;/span&gt; eta &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; lift normal
-                x &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; get
-                &lt;span class="kw"&gt;let&lt;/span&gt; x&amp;#39; &lt;span class="fu"&gt;=&lt;/span&gt; x &lt;span class="fu"&gt;+&lt;/span&gt; eta
+normal :: Rand StdGen Double  -- normally distributed
+normal = do x &amp;lt;- getRandom
+            y &amp;lt;- getRandom
+            return $ boxmuller x y
+
+normals n = replicateM n normal -- n independent samples from normal&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="64"&gt;&lt;span data-line="64"&gt;&lt;/span&gt;Running this function we get what we need:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="66" data-line-code="67" &gt;&lt;code data-line="67"&gt;*Main&amp;gt; (evalRand $ normals 5) (mkStdGen 0) =
+[0.1600255836730147,0.1575360140445035,-1.595627933129274,
+-0.18196791439834512,-1.082222285056746]&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="72"&gt;&lt;span data-line="72"&gt;&lt;/span&gt;So what is a stochastic process? In very rough terms: is a dynamical system with random variables. So we need a way to make the &lt;span data-line="72"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;Rand&lt;/code&gt;&lt;span data-line="72"&gt;&lt;/span&gt; monad to talk nicely with the &lt;span data-line="72"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;State&lt;/code&gt;&lt;span data-line="72"&gt;&lt;/span&gt; monad. The way to do this is to use a monad transformer, in this case, the &lt;span data-line="72"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;StateT&lt;/code&gt;&lt;span data-line="72"&gt;&lt;/span&gt; transformer. Monad transformers allows you to combine the functionalities of two different monads. In the case of the &lt;span data-line="72"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;StateT&lt;/code&gt;&lt;span data-line="72"&gt;&lt;/span&gt; monads, they allow you to add a state to any other monad you want. In our case, we want to wrap the &lt;span data-line="72"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;Rand&lt;/code&gt;&lt;span data-line="72"&gt;&lt;/span&gt; monad inside a &lt;span data-line="72"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;StateT&lt;/code&gt;&lt;span data-line="72"&gt;&lt;/span&gt; transformer and work with things of type:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="74" data-line-code="75" &gt;&lt;code data-line="75"&gt;foo ::  StateT s (Rand StdGen) r&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="78"&gt;&lt;span data-line="78"&gt;&lt;/span&gt;This type represent a monad that can store a state with type s, like the state monad, and can generate random variables of type r, like the rand monad. In general we would have a type
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="80" data-line-code="81" &gt;&lt;code data-line="81"&gt;foo2 ::(MonadTrans t, Monad m) =&amp;gt; t m a&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="84"&gt;&lt;span data-line="84"&gt;&lt;/span&gt;In this case, &lt;span data-line="84"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;t = StateT s&lt;/code&gt;&lt;span data-line="84"&gt;&lt;/span&gt; and &lt;span data-line="84"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;m = Rand StdGen&lt;/code&gt;&lt;span data-line="84"&gt;&lt;/span&gt;. The class &lt;span data-line="84"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;MonadTrans&lt;/code&gt;&lt;span data-line="84"&gt;&lt;/span&gt; is defined in &lt;span data-line="84"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;Control.Monad.Trans&lt;/code&gt;&lt;span data-line="84"&gt;&lt;/span&gt;, and provides the function:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="86" data-line-code="87" &gt;&lt;code data-line="87"&gt;lift :: (MonadTrans t, Monad m) =&amp;gt; m a -&amp;gt; t m a&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="90"&gt;&lt;span data-line="90"&gt;&lt;/span&gt;In this case, &lt;span data-line="90"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;t&lt;/code&gt;&lt;span data-line="90"&gt;&lt;/span&gt; is itself a monad, and can be treated like one through the code. It works like this: inside a do expression you can use the &lt;span data-line="90"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;lift&lt;/code&gt;&lt;span data-line="90"&gt;&lt;/span&gt; function to access the inner monad. Things called with lift will operate in the inner monad. Things called without &lt;span data-line="90"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;lift&lt;/code&gt;&lt;span data-line="90"&gt;&lt;/span&gt; will operate in the outer monad.
+&lt;/p&gt;
+&lt;p class="indent para-continue" data-line="92"&gt;&lt;span data-line="92"&gt;&lt;/span&gt;So, suppose we want to simulate this very simple process:
+&lt;/p&gt;
+&lt;div id="random_walk" class="equation para-block" data-line="94" style="line-adjust:0"&gt;&lt;span data-line="94"&gt;&lt;/span&gt;&lt;span class="equation-before"&gt;&lt;span class="equation-label"&gt;(3)&lt;/span&gt;&lt;/span&gt;&lt;span data-line="94"&gt;&lt;/span&gt;
+
+&lt;div class="mathdisplay para-block input-math"   data-line="95" style="line-adjust:0"&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="mathdisplay math-display"  &gt;\[  \displaystyle x_{t+1} = x_{t} + \eta_t
+\]&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p data-line="98"&gt;&lt;span data-line="98"&gt;&lt;/span&gt;where &lt;span data-line="98"&gt;&lt;/span&gt;&lt;span class="math-rendering" title="Rendering math..."&gt;&lt;span class="math-inline"&gt;$\eta_t$&lt;/span&gt;&lt;/span&gt;&lt;span data-line="98"&gt;&lt;/span&gt; is drawn from a normal distribution. We would do:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="100" data-line-code="101" &gt;&lt;code data-line="101"&gt;randomWalk :: StateT Double (Rand StdGen) Double
+randomWalk = do eta &amp;lt;- lift normal
+                x &amp;lt;- get
+                let x&amp;#39; = x + eta
                 put x&amp;#39;
                 return x&amp;#39;
-&lt;span class="ot"&gt;runWalk ::&lt;/span&gt; &lt;span class="dt"&gt;Int&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="dt"&gt;Double&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="dt"&gt;StdGen&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; [&lt;span class="dt"&gt;Double&lt;/span&gt;]
-runWalk n x0 gen &lt;span class="fu"&gt;=&lt;/span&gt; evalRand (replicateM n &lt;span class="fu"&gt;$&lt;/span&gt; evalStateT randomWalk x0) gen&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;evalStateT&lt;/code&gt; function is just evalState adapted to run a StateT monad. Running this on ghci we get:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt; &lt;span class="fu"&gt;*&lt;/span&gt;&lt;span class="dt"&gt;Main&lt;/span&gt;&lt;span class="fu"&gt;&amp;gt;&lt;/span&gt; runWalk &lt;span class="dv"&gt;5&lt;/span&gt; &lt;span class="fl"&gt;0.0&lt;/span&gt; gen
-[&lt;span class="fl"&gt;0.1600255836730147&lt;/span&gt;,&lt;span class="fl"&gt;0.1575360140445035&lt;/span&gt;,&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="fl"&gt;1.595627933129274&lt;/span&gt;,
-&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="fl"&gt;0.18196791439834512&lt;/span&gt;,&lt;span class="fu"&gt;-&lt;/span&gt;&lt;span class="fl"&gt;1.082222285056746&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is what we can accomplish: we can easily operate simultaneously with functions that expect a state monad, like put and get, we can unwrap things with &lt;code&gt;&amp;lt;-&lt;/code&gt; from the inner &lt;code&gt;Rand&lt;/code&gt; monad by using &lt;code&gt;lift&lt;/code&gt; , and we can return things to the state monad. We could have any monad inside the &lt;code&gt;StateT&lt;/code&gt; transformer. For example, we could have another &lt;code&gt;State&lt;/code&gt; monad. Here is a fancy implementation of the Fibonacci sequence using a &lt;code&gt;State&lt;/code&gt; monad (that stores the last but one value in the sequence as its internal state) inside a &lt;code&gt;StateT&lt;/code&gt; transfomer (that stores the last value of the sequence):&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="ot"&gt;fancyFib ::&lt;/span&gt; &lt;span class="dt"&gt;StateT&lt;/span&gt; &lt;span class="dt"&gt;Int&lt;/span&gt; (&lt;span class="dt"&gt;State&lt;/span&gt; &lt;span class="dt"&gt;Int&lt;/span&gt;) &lt;span class="dt"&gt;Int&lt;/span&gt;
-fancyFib &lt;span class="fu"&gt;=&lt;/span&gt; &lt;span class="kw"&gt;do&lt;/span&gt; old &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; lift get
-              new &lt;span class="ot"&gt;&amp;lt;-&lt;/span&gt; get
-              &lt;span class="kw"&gt;let&lt;/span&gt; new&amp;#39; &lt;span class="fu"&gt;=&lt;/span&gt; new &lt;span class="fu"&gt;+&lt;/span&gt; old
-                  old&amp;#39; &lt;span class="fu"&gt;=&lt;/span&gt; new
-              lift &lt;span class="fu"&gt;$&lt;/span&gt; put old&amp;#39;
+runWalk :: Int -&amp;gt; Double -&amp;gt; StdGen -&amp;gt; [Double]
+runWalk n x0 gen = evalRand (replicateM n $ evalStateT randomWalk x0) gen&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="111"&gt;&lt;span data-line="111"&gt;&lt;/span&gt;The &lt;span data-line="111"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;evalStateT&lt;/code&gt;&lt;span data-line="111"&gt;&lt;/span&gt; function is just evalState adapted to run a StateT monad. Running this on ghci we get:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="113" data-line-code="114" &gt;&lt;code data-line="114"&gt; *Main&amp;gt; runWalk 5 0.0 gen
+[0.1600255836730147,0.1575360140445035,-1.595627933129274,
+-0.18196791439834512,-1.082222285056746]&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="119"&gt;&lt;span data-line="119"&gt;&lt;/span&gt;This is what we can accomplish: we can easily operate simultaneously with functions that expect a state monad, like put and get, we can unwrap things with &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;&amp;lt;-&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; from the inner &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;Rand&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; monad by using &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;lift&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; , and we can return things to the state monad. We could have any monad inside the &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;StateT&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; transformer. For example, we could have another &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;State&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; monad. Here is a fancy implementation of the Fibonacci sequence using a &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;State&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; monad (that stores the last but one value in the sequence as its internal state) inside a &lt;span data-line="119"&gt;&lt;/span&gt;&lt;code class="code code1"&gt;StateT&lt;/code&gt;&lt;span data-line="119"&gt;&lt;/span&gt; transfomer (that stores the last value of the sequence):
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="121" data-line-code="122" &gt;&lt;code data-line="122"&gt;fancyFib :: StateT Int (State Int) Int
+fancyFib = do old &amp;lt;- lift get
+              new &amp;lt;- get
+              let new&amp;#39; = new + old
+                  old&amp;#39; = new
+              lift $ put old&amp;#39;
               put new&amp;#39;
               return new
 
-&lt;span class="ot"&gt;fancyFibs ::&lt;/span&gt; &lt;span class="dt"&gt;Int&lt;/span&gt; &lt;span class="ot"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="dt"&gt;StateT&lt;/span&gt; &lt;span class="dt"&gt;Int&lt;/span&gt; (&lt;span class="dt"&gt;State&lt;/span&gt; &lt;span class="dt"&gt;Int&lt;/span&gt;) [&lt;span class="dt"&gt;Int&lt;/span&gt;]
-fancyFibs n &lt;span class="fu"&gt;=&lt;/span&gt; replicateM n fancyFibs&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And we can run this to get:&lt;/p&gt;
-&lt;pre class="sourceCode haskell"&gt;&lt;code class="sourceCode haskell"&gt;&lt;span class="fu"&gt;*&lt;/span&gt;&lt;span class="dt"&gt;Main&lt;/span&gt;&lt;span class="fu"&gt;&amp;gt;&lt;/span&gt; evalState (evalStateT (fancyFibs &lt;span class="dv"&gt;10&lt;/span&gt;) &lt;span class="dv"&gt;1&lt;/span&gt;) &lt;span class="dv"&gt;0&lt;/span&gt;
-[&lt;span class="dv"&gt;1&lt;/span&gt;,&lt;span class="dv"&gt;1&lt;/span&gt;,&lt;span class="dv"&gt;2&lt;/span&gt;,&lt;span class="dv"&gt;3&lt;/span&gt;,&lt;span class="dv"&gt;5&lt;/span&gt;,&lt;span class="dv"&gt;8&lt;/span&gt;,&lt;span class="dv"&gt;13&lt;/span&gt;,&lt;span class="dv"&gt;21&lt;/span&gt;,&lt;span class="dv"&gt;34&lt;/span&gt;,&lt;span class="dv"&gt;55&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script type="text/x-mathjax-config"&gt;
-MathJax.Hub.Config({
-    tex2jax: {
-      processClass: "math"
-    },
-    TeX: {
-        TagSide: "left",
-        TagIndent: "1.2em",
-        equationNumbers: {
-            autoNumber: "AMS"
-        },
-        Macros: {
-            ensuremath: ["#1",1],
-            textsf: ["\\mathsf{\\text{#1}}",1],
-            texttt: ["\\mathtt{\\text{#1}}",1]
-        }
-    },
-    "HTML-CSS": { 
-        scale: 100,
-        availableFonts: ["TeX"], 
-        preferredFont: "TeX",
-        webFont: "TeX",
-        imageFont: "TeX",
-        EqnChunk: 1000
-    }
-});
-&lt;/script&gt;
-&lt;script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full" type="text/javascript"&gt;&lt;/script&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</summary><category term="Haskell"></category><category term="Monad Transformers"></category><category term="Monads"></category><category term="Tutorial"></category><category term="Stochastic Processes"></category></entry></feed>
+fancyFibs :: Int -&amp;gt; StateT Int (State Int) [Int]
+fancyFibs n = replicateM n fancyFibs&lt;/code&gt;&lt;/pre&gt;
+&lt;p data-line="135"&gt;&lt;span data-line="135"&gt;&lt;/span&gt;And we can run this to get:
+&lt;/p&gt;
+&lt;pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="137" data-line-code="138" &gt;&lt;code data-line="138"&gt;*Main&amp;gt; evalState (evalStateT (fancyFibs 10) 1) 0
+[1,1,2,3,5,8,13,21,34,55]&lt;/code&gt;&lt;/pre&gt;&lt;span data-line=""&gt;&lt;/span&gt;</summary><category term="Haskell"></category><category term="Monad Transformers"></category><category term="Monads"></category><category term="Tutorial"></category><category term="Stochastic Processes"></category></entry><entry><title>Bayesian Hierarchical Models</title><link href="http://rcalsaverini.github.io/bayesian-hierarchical-models.html" rel="alternate"></link><updated>2010-08-03T23:55:00-03:00</updated><author><name>Rafael S. Calsaverini</name></author><id>tag:rcalsaverini.github.io,2010-08-03:bayesian-hierarchical-models.html</id><summary type="html">
+&lt;hr  class="madoko" data-line="1"&gt;
+
+&lt;p data-line="3"&gt;&lt;span data-line="3"&gt;&lt;/span&gt;Bayesian hierarchical modeling is a statistical model written in multiple levels (hierarchical form) that estimates the parameters of the posterior distribution using the Bayesian method.&lt;span data-line="3"&gt;&lt;/span&gt;[1]&lt;span data-line="3"&gt;&lt;/span&gt; The sub-models combine to form the hierarchical model, and the Bayes’ theorem is used to integrate them with the observed data, and account for all the uncertainty that is present. The result of this integration is the posterior distribution, also known as the updated probability estimate, as additional evidence on the prior distribution is acquired.
+&lt;/p&gt;
+&lt;p class="indent" data-line="5"&gt;&lt;span data-line="5"&gt;&lt;/span&gt;Frequentist statistics, the more popular foundation of statistics, has been known to contradict Bayesian statistics due to its treatment of the parameters as a random variable, and its use of subjective information in establishing assumptions on these parameters. However, Bayesians argue that relevant information regarding decision making and updating beliefs cannot be ignored and that hierarchical modeling has the potential to overrule classical methods in applications where respondents give multiple observational data. Moreover, the model has proven to be robust, with the posterior distribution less sensitive to the more flexible hierarchical priors.
+&lt;/p&gt;
+&lt;p class="indent" data-line="7"&gt;&lt;span data-line="7"&gt;&lt;/span&gt;Hierarchical modeling is used when information is available on several different levels of observational units. The hierarchical form of analysis and organization helps in the understanding of multiparameter problems and also plays an important role in developing computational strategies.
+&lt;/p&gt;&lt;span data-line=""&gt;&lt;/span&gt;</summary><category term="Bayesian modelling"></category><category term="Hierarchical models"></category></entry></feed>

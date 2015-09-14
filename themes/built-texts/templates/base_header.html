@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row-fluid">
+    <div class="span4">
+      <a href="{{ SITEURL }}" class="brand">{{SITENAME}}</a>
+    </div>
+    <div class="span8" id="blog-nav">
+      <ul class="nav nav-pills pull-right">
+        {% for page in PAGES %}
+          <li><a href="{{ SITEURL }}/{{ page.url }}">
+            {{ page.title }}
+          </a></li>
+        {% endfor %}
+        <li><a href="{{ SITEURL }}">
+          <i class="fa fa-home fa-fw" style="color: #1f334b">
+          Home
+        </a></li>
+        <li><a href="{{ SITEURL }}/archives.html">
+          <i class="fa fa-home fa-fw" style="color: #1f334b">
+          Archives
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</div>

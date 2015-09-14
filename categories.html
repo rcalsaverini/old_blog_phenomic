@@ -1,59 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-      <title>Entropy maximizer</title>
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
-      <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
-      <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
-      <link rel="stylesheet" type="text/css" href="./theme/css/icons.css"/>
-      <link rel="stylesheet" type="text/css" href="./theme/css/styles.css"/>
-      <meta charset="utf-8" />
-        <link href="/atom.rss" type="application/rss+xml" rel="alternate" title="Entropy maximizer RSS Feed" />
+    <meta charset="utf-8">
+    <title>Entropy maximizer <small>[categories]</small></title>
+    <meta name="description" content="">
+    <meta name="author" content="Rafael S. Calsaverini">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+      <script src="./theme/html5.js"></script>
+    <![endif]-->
+    <link href="http://rcalsaverini.github.io/rss.xml" type="application/rss+xml" rel="alternate" title="Entropy maximizer RSS Feed" />
+    <link href="http://rcalsaverini.github.io/atom.xml" type="application/atom+xml" rel="alternate" title="Entropy maximizer Atom Feed" />
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="./theme/local.css" rel="stylesheet">
+    <link href="./theme/pygments.css" rel="stylesheet">
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="./theme/highlight/styles/default.css">
+    <script src="./theme/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
   </head>
-
-  <body id="index">
-    <!-- header -->
-    <header class="siteheader">
-      <!-- site image -->
-        <div class= "siteimage">
-          <a class="nodec" href=https://www.gravatar.com/avatar/9ed01afca2cc6c4d7d0c4d134fe5bde4?s=328&d=identicon&r=PG>
-            <img width="200" height="200" src=https://www.gravatar.com/avatar/9ed01afca2cc6c4d7d0c4d134fe5bde4?s=328&d=identicon&r=PG>
-          </a>
+  <body>
+    <header class="blog-header">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span4">
+            <a href="." class="brand">Entropy maximizer</a>
+          </div>
+          <div class="span8" id="blog-nav">
+            <ul class="nav nav-pills pull-right">
+              <li><a href=".">
+                <i class="fa fa-home fa-fw" style="color: #1f334b"></i> Home
+              </a></li>
+              <li><a href="./archives.html">
+                <i class="fa fa-archive fa-fw" style="color: #1f334b"></i> Archive
+              </a></li>
+              <li><a href="./tags.html">
+                <i class="fa fa-tag fa-fw" style="color: #1f334b"></i> Tags
+              </a></li>
+              <li><a href="./rss.xml">
+                <i class="fa fa-feed fa-fw" style="color: #1f334b"></i> RSS
+              </a></li>
+              <li><a href="./atom.xml">
+                <i class="fa fa-feed fa-fw" style="color: #1f334b"></i> Atom
+              </a></li>
+            </ul>
+          </div>
         </div>
-
-      <div class = "sitebanner">
-        <h1><a class="sitetitle nodec" href=".">Entropy maximizer</a></h1>
-        <h3 class ="sitesubtitle">Trapped at a local maximum.</h3>
-        <!-- nav -->
-        <nav class="menu">
-          <ul>
-            <!-- menu items-->
-            <!--pages-->
-            <!-- services icons -->
-              <li><a class="nodec icon-github" href="http://github.com/rcalsaverini"></a></li>
-              <li><a class="nodec icon-stackoverflow" href="http://stackoverflow.com/users/114388/rafael-s-calsaverini"></a></li>
-              <li><a class="nodec icon-twitter" href="http://twitter.com/rcalsaverini"></a></li>
-              <li><a class="nodec icon-facebook" href="https://www.facebook.com/rafael.calsaverini/"></a></li>
-              <li><a class="nodec icon-rss" href="/atom.rss"></a></li>
-          </ul>
-        </nav>
-      </div> <!-- sitebanner -->
+      </div>
     </header>
-
-    <!-- content -->
+    <div class="container">
+      <div class="content">
+        <div class="row-fluid">
+          <div class="span10">
 <ul>
-    <li><a href="./category/haskell.html">haskell</a></li>
+	<li><a href="./category/bayesian-modelling.html">bayesian modelling</li>
+	<li><a href="./category/haskell.html">haskell</li>
 </ul>
 
-    <!-- footer -->
-    <footer>
-      <p>
-        © Rafael S. Calsaverini, license <a href="https://creativecommons.org/licenses/by-sa/3.0/"> Creative Commons BY-SA 3.0</a>
-        unless otherwise noted.
-        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
-        <a href="http://github.com/porterjamesj/crowsfoot">crowsfoot</a> theme.
-      </p>
-    </footer>
+          </div>
+          <div class="span2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container license">
+      <div class="well" style="background-color: #E9EFF6">
+        <a href=".">Entropy maximizer</a> is written by Rafael S. Calsaverini,
+        licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
   </body>
 </html>

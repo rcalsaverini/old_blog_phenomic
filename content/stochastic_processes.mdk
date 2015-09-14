@@ -1,14 +1,15 @@
 ---
 title: Stochastic Processes as Monad Transformers
 author: Rafael S. Calsaverini
-date: 2010-08-03 23:55
+date: 2015-08-03 23:55
 category: haskell
 tags: Haskell, Monad Transformers, Monads, Tutorial, Stochastic Processes
 disqus_identifier: stochastic_processes_as_monad_transformers
-summary: Understanding monad transformers using stochastic processes as an example.
+
 ---
 
 I have a difficulty to understand functional programming concepts that I can’t put to some very simple and natural use (natural for me, of course). I need to find the perfect simple example to implement to finally understand something. And I’m not a computer scientist, so things like parsers and compilers have very little appeal to me (probably because I don’t understand them…). I’m a physicist, so this drives me to look for physical problems that can be implemented in Haskell so I can understand some concepts.
+
 
 Monad transformers still eludes me. But I think I finally got the perfect subject were I can understand them: stochastic processes! First some book keeping:
 
@@ -20,9 +21,9 @@ import Control.Monad.Rand
 
 Now, stochastic processes have characteristics related to two different monads. In one hand, they are dynamical processes, and the way to implement dynamics in Haskell is with state monads. For example, if I want to iterate the logistic map:
 
-```math #logistic
+~ Equation {#logistic}
   \displaystyle x_{t+1} = \alpha x_t\left(1-x_t\right)
-```
+~
 
 I could do the following:
 
@@ -50,9 +51,9 @@ So we can make the loose correspondence: dynamical system ↔ state monad.
 
 On the other hand, stochastic processes are compositions of random variables, and this is done with the Rand monad (found in `Control.Monad.Random`). As an example, the Box-Muller formula tells us that, if I have two inpendent random variables $x$ and $y$, distributed uniformly between in the $[0, 1]$ interval, then, the expression:
 
-```math
+~ Equation {#box_muller}
   \displaystyle \sqrt{-2\log(x)}\cos(2\pi y)
-```
+~
 
 will be normally distributed. We can write then:
 
@@ -98,9 +99,9 @@ In this case, `t` is itself a monad, and can be treated like one through the cod
 
 So, suppose we want to simulate this very simple process:
 
-```math
+~ Equation {#random_walk}
   \displaystyle x_{t+1} = x_{t} + \eta_t
-```
+~
 
 where $\eta_t$ is drawn from a normal distribution. We would do:
 

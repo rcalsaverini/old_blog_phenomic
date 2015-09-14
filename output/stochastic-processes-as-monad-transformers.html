@@ -8,6 +8,16 @@
       <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
       <link rel="stylesheet" type="text/css" href="./theme/css/icons.css"/>
       <link rel="stylesheet" type="text/css" href="./theme/css/styles.css"/>
+      <link rel="stylesheet" type="text/css" href="./theme/css/madoko.css"/>
+      <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+      </script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <link rel="stylesheet" href="./theme/highlight/styles/default.css">
+      <script src="./theme/highlight/highlight.pack.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
       <meta charset="utf-8" />
         <link href="/atom.rss" type="application/rss+xml" rel="alternate" title="Entropy maximizer RSS Feed" />
   </head>
@@ -60,126 +70,106 @@
       By <a class="nodec" href="./author/rafael-s-calsaverini.html">Rafael S. Calsaverini</a>
     </address>
   </div><!-- .postinfo -->
-
   <div class="article">
-    <p>I have a difficulty to understand functional programming concepts that I can’t put to some very simple and natural use (natural for me, of course). I need to find the perfect simple example to implement to finally understand something. And I’m not a computer scientist, so things like parsers and compilers have very little appeal to me (probably because I don’t understand them…). I’m a physicist, so this drives me to look for physical problems that can be implemented in Haskell so I can understand some concepts.</p>
-<p>Monad transformers still eludes me. But I think I finally got the perfect subject were I can understand them: stochastic processes! First some book keeping:</p>
-<div class="highlight"><pre><span class="kr">import</span> <span class="nn">Control.Monad.State</span>
-<span class="kr">import</span> <span class="nn">Control.Monad</span>
-<span class="kr">import</span> <span class="nn">Control.Monad.Rand</span>
-</pre></div>
+    
+<hr  class="madoko" data-line="1">
 
+<p data-line="3"><span data-line="3"></span>I have a difficulty to understand functional programming concepts that I can’t put to some very simple and natural use (natural for me, of course). I need to find the perfect simple example to implement to finally understand something. And I’m not a computer scientist, so things like parsers and compilers have very little appeal to me (probably because I don’t understand them…). I’m a physicist, so this drives me to look for physical problems that can be implemented in Haskell so I can understand some concepts.
+</p>
+<p class="indent" data-line="6"><span data-line="6"></span>Monad transformers still eludes me. But I think I finally got the perfect subject were I can understand them: stochastic processes! First some book keeping:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell"  data-line="8" data-line-code="9" ><code data-line="9">import Control.Monad.State
+import Control.Monad
+import Control.Monad.Rand</code></pre>
+<p class="para-continue" data-line="14"><span data-line="14"></span>Now, stochastic processes have characteristics related to two different monads. In one hand, they are dynamical processes, and the way to implement dynamics in Haskell is with state monads. For example, if I want to iterate the logistic map:
+</p>
+<div id="logistic" class="equation para-block" data-line="16" style="line-adjust:0"><span data-line="16"></span><span class="equation-before"><span class="equation-label">(1)</span></span><span data-line="16"></span>
 
-<p>Now, stochastic processes have characteristics related to two different monads. In one hand, they are dynamical processes, and the way to implement dynamics in Haskell is with state monads. For example, if I want to iterate the logistic map:</p>
-<p>```math #logistic
-  \displaystyle x_{t+1} = \alpha x_t\left(1-x_t\right)</p>
-<div class="highlight"><pre>I could do the following<span class="o">:</span>
+<div class="mathdisplay para-block input-math"   data-line="17" style="line-adjust:0"><span class="math-rendering" title="Rendering math..."><span class="mathdisplay math-display"  >\[  \displaystyle x_{t+1} = \alpha x_t\left(1-x_t\right)
+\]</span></span></div></div>
+<p data-line="20"><span data-line="20"></span>I could do the following:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="22" data-line-code="23" ><code data-line="23">  f :: Double -&gt; Double
+  f x = 4*x*(1-x)
 
-<span class="sb">``</span>`haskell
-  f <span class="o">::</span> Double <span class="o">-&gt;</span> Double
-  f x <span class="o">=</span> <span class="m">4</span><span class="o">*</span>x<span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span>x<span class="p">)</span>
-
-  logistic <span class="o">::</span> State Double Double
-  logistic <span class="o">=</span> do x0 <span class="o">&lt;-</span> <span class="kp">get</span>
-        let x1 <span class="o">=</span> f x
+  logistic :: State Double Double
+  logistic = do x0 &lt;- get
+        let x1 = f x
         put x1
-        <span class="kr">return</span> x1
-  runLogistic <span class="o">::</span> State Double <span class="p">[</span>Double<span class="p">]</span>
-  runLogistic n x0<span class="o">=</span> evalState <span class="p">(</span>replicateM n logistic<span class="p">)</span> x0
-</pre></div>
+        return x1
+  runLogistic :: State Double [Double]
+  runLogistic n x0= evalState (replicateM n logistic) x0</code></pre>
+<p data-line="35"><span data-line="35"></span>Running this on ghci would give you, for example:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="37" data-line-code="38" ><code data-line="38">  *Main&gt; runLogistic 5 0.2
+  [0.6400000000000001,0.9215999999999999,0.28901376000000045, 0.8219392261226504,0.5854205387341]</code></pre>
+<p data-line="42"><span data-line="42"></span>So we can make the loose correspondence: dynamical system ↔ state monad.
+</p>
+<p class="indent" data-line="44"><span data-line="44"></span>On the other hand, stochastic processes are compositions of random variables, and this is done with the Rand monad (found in <span data-line="44"></span><code class="code code1">Control.Monad.Random</code><span data-line="44"></span>). As an example, the Box-Muller formula tells us that, if I have two inpendent random variables <span data-line="44"></span><span class="math-rendering" title="Rendering math..."><span class="math-inline">$x$</span></span><span data-line="44"></span> and <span data-line="44"></span><span class="math-rendering" title="Rendering math..."><span class="math-inline">$y$</span></span><span data-line="44"></span>, distributed uniformly between in the <span data-line="44"></span><span class="math-rendering" title="Rendering math..."><span class="math-inline">$[0, 1]$</span></span><span data-line="44"></span> interval, then, the expression:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-math lang-math math" data-line="46" data-line-code="47" ><code data-line="47">  \displaystyle \sqrt{-2\log(x)}\cos(2\pi y)</code></pre>
+<p data-line="50"><span data-line="50"></span>will be normally distributed. We can write then:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="52" data-line-code="53" ><code data-line="53">boxmuller :: Double -&gt; Double -&gt; Double
+boxmuller x y = sqrt(-2*log x)*cos(2*pi*y)
 
+normal :: Rand StdGen Double  -- normally distributed
+normal = do x &lt;- getRandom
+            y &lt;- getRandom
+            return $ boxmuller x y
 
-<p>Running this on ghci would give you, for example:</p>
-<div class="highlight"><pre>  <span class="o">*</span><span class="kt">Main</span><span class="o">&gt;</span> <span class="n">runLogistic</span> <span class="mi">5</span> <span class="mf">0.2</span>
-  <span class="p">[</span><span class="mf">0.6400000000000001</span><span class="p">,</span><span class="mf">0.9215999999999999</span><span class="p">,</span><span class="mf">0.28901376000000045</span><span class="p">,</span> <span class="mf">0.8219392261226504</span><span class="p">,</span><span class="mf">0.5854205387341</span><span class="p">]</span>
-</pre></div>
+normals n = replicateM n normal -- n independent samples from normal</code></pre>
+<p data-line="64"><span data-line="64"></span>Running this function we get what we need:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="66" data-line-code="67" ><code data-line="67">*Main&gt; (evalRand $ normals 5) (mkStdGen 0) =
+[0.1600255836730147,0.1575360140445035,-1.595627933129274,
+-0.18196791439834512,-1.082222285056746]</code></pre>
+<p data-line="72"><span data-line="72"></span>So what is a stochastic process? In very rough terms: is a dynamical system with random variables. So we need a way to make the <span data-line="72"></span><code class="code code1">Rand</code><span data-line="72"></span> monad to talk nicely with the <span data-line="72"></span><code class="code code1">State</code><span data-line="72"></span> monad. The way to do this is to use a monad transformer, in this case, the <span data-line="72"></span><code class="code code1">StateT</code><span data-line="72"></span> transformer. Monad transformers allows you to combine the functionalities of two different monads. In the case of the <span data-line="72"></span><code class="code code1">StateT</code><span data-line="72"></span> monads, they allow you to add a state to any other monad you want. In our case, we want to wrap the <span data-line="72"></span><code class="code code1">Rand</code><span data-line="72"></span> monad inside a <span data-line="72"></span><code class="code code1">StateT</code><span data-line="72"></span> transformer and work with things of type:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="74" data-line-code="75" ><code data-line="75">foo ::  StateT s (Rand StdGen) r</code></pre>
+<p data-line="78"><span data-line="78"></span>This type represent a monad that can store a state with type s, like the state monad, and can generate random variables of type r, like the rand monad. In general we would have a type
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="80" data-line-code="81" ><code data-line="81">foo2 ::(MonadTrans t, Monad m) =&gt; t m a</code></pre>
+<p data-line="84"><span data-line="84"></span>In this case, <span data-line="84"></span><code class="code code1">t = StateT s</code><span data-line="84"></span> and <span data-line="84"></span><code class="code code1">m = Rand StdGen</code><span data-line="84"></span>. The class <span data-line="84"></span><code class="code code1">MonadTrans</code><span data-line="84"></span> is defined in <span data-line="84"></span><code class="code code1">Control.Monad.Trans</code><span data-line="84"></span>, and provides the function:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="86" data-line-code="87" ><code data-line="87">lift :: (MonadTrans t, Monad m) =&gt; m a -&gt; t m a</code></pre>
+<p data-line="90"><span data-line="90"></span>In this case, <span data-line="90"></span><code class="code code1">t</code><span data-line="90"></span> is itself a monad, and can be treated like one through the code. It works like this: inside a do expression you can use the <span data-line="90"></span><code class="code code1">lift</code><span data-line="90"></span> function to access the inner monad. Things called with lift will operate in the inner monad. Things called without <span data-line="90"></span><code class="code code1">lift</code><span data-line="90"></span> will operate in the outer monad.
+</p>
+<p class="indent" data-line="92"><span data-line="92"></span>So, suppose we want to simulate this very simple process:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-math lang-math math" data-line="94" data-line-code="95" ><code data-line="95">  \displaystyle x_{t+1} = x_{t} + \eta_t</code></pre>
+<p data-line="98"><span data-line="98"></span>where <span data-line="98"></span><span class="math-rendering" title="Rendering math..."><span class="math-inline">$\eta_t$</span></span><span data-line="98"></span> is drawn from a normal distribution. We would do:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="100" data-line-code="101" ><code data-line="101">randomWalk :: StateT Double (Rand StdGen) Double
+randomWalk = do eta &lt;- lift normal
+                x &lt;- get
+                let x&#39; = x + eta
+                put x&#39;
+                return x&#39;
+runWalk :: Int -&gt; Double -&gt; StdGen -&gt; [Double]
+runWalk n x0 gen = evalRand (replicateM n $ evalStateT randomWalk x0) gen</code></pre>
+<p data-line="111"><span data-line="111"></span>The <span data-line="111"></span><code class="code code1">evalStateT</code><span data-line="111"></span> function is just evalState adapted to run a StateT monad. Running this on ghci we get:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="113" data-line-code="114" ><code data-line="114"> *Main&gt; runWalk 5 0.0 gen
+[0.1600255836730147,0.1575360140445035,-1.595627933129274,
+-0.18196791439834512,-1.082222285056746]</code></pre>
+<p data-line="119"><span data-line="119"></span>This is what we can accomplish: we can easily operate simultaneously with functions that expect a state monad, like put and get, we can unwrap things with <span data-line="119"></span><code class="code code1">&lt;-</code><span data-line="119"></span> from the inner <span data-line="119"></span><code class="code code1">Rand</code><span data-line="119"></span> monad by using <span data-line="119"></span><code class="code code1">lift</code><span data-line="119"></span> , and we can return things to the state monad. We could have any monad inside the <span data-line="119"></span><code class="code code1">StateT</code><span data-line="119"></span> transformer. For example, we could have another <span data-line="119"></span><code class="code code1">State</code><span data-line="119"></span> monad. Here is a fancy implementation of the Fibonacci sequence using a <span data-line="119"></span><code class="code code1">State</code><span data-line="119"></span> monad (that stores the last but one value in the sequence as its internal state) inside a <span data-line="119"></span><code class="code code1">StateT</code><span data-line="119"></span> transfomer (that stores the last value of the sequence):
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="121" data-line-code="122" ><code data-line="122">fancyFib :: StateT Int (State Int) Int
+fancyFib = do old &lt;- lift get
+              new &lt;- get
+              let new&#39; = new + old
+                  old&#39; = new
+              lift $ put old&#39;
+              put new&#39;
+              return new
 
-
-<p>So we can make the loose correspondence: dynamical system ↔ state monad.</p>
-<p>On the other hand, stochastic processes are compositions of random variables, and this is done with the Rand monad (found in <code>Control.Monad.Random</code>). As an example, the Box-Muller formula tells us that, if I have two inpendent random variables $x$ and $y$, distributed uniformly between in the $[0, 1]$ interval, then, the expression:</p>
-<div class="highlight"><pre>  \displaystyle \sqrt{-2\log(x)}\cos(2\pi y)
-</pre></div>
-
-
-<p>will be normally distributed. We can write then:</p>
-<div class="highlight"><pre><span class="nf">boxmuller</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
-<span class="nf">boxmuller</span> <span class="n">x</span> <span class="n">y</span> <span class="ow">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">log</span> <span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
-
-<span class="nf">normal</span> <span class="ow">::</span> <span class="kt">Rand</span> <span class="kt">StdGen</span> <span class="kt">Double</span>  <span class="c1">-- normally distributed</span>
-<span class="nf">normal</span> <span class="ow">=</span> <span class="kr">do</span> <span class="n">x</span> <span class="ow">&lt;-</span> <span class="n">getRandom</span>
-            <span class="n">y</span> <span class="ow">&lt;-</span> <span class="n">getRandom</span>
-            <span class="n">return</span> <span class="o">$</span> <span class="n">boxmuller</span> <span class="n">x</span> <span class="n">y</span>
-
-<span class="nf">normals</span> <span class="n">n</span> <span class="ow">=</span> <span class="n">replicateM</span> <span class="n">n</span> <span class="n">normal</span> <span class="c1">-- n independent samples from normal</span>
-</pre></div>
-
-
-<p>Running this function we get what we need:</p>
-<div class="highlight"><pre><span class="o">*</span><span class="kt">Main</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">evalRand</span> <span class="o">$</span> <span class="n">normals</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="n">mkStdGen</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">=</span>
-<span class="p">[</span><span class="mf">0.1600255836730147</span><span class="p">,</span><span class="mf">0.1575360140445035</span><span class="p">,</span><span class="o">-</span><span class="mf">1.595627933129274</span><span class="p">,</span>
-<span class="o">-</span><span class="mf">0.18196791439834512</span><span class="p">,</span><span class="o">-</span><span class="mf">1.082222285056746</span><span class="p">]</span>
-</pre></div>
-
-
-<p>So what is a stochastic process? In very rough terms: is a dynamical system with random variables. So we need a way to make the <code>Rand</code> monad to talk nicely with the <code>State</code> monad. The way to do this is to use a monad transformer, in this case, the <code>StateT</code> transformer. Monad transformers allows you to combine the functionalities of two different monads. In the case of the <code>StateT</code> monads, they allow you to add a state to any other monad you want. In our case, we want to wrap the <code>Rand</code> monad inside a <code>StateT</code> transformer and work with things of type:</p>
-<div class="highlight"><pre><span class="nf">foo</span> <span class="ow">::</span>  <span class="kt">StateT</span> <span class="n">s</span> <span class="p">(</span><span class="kt">Rand</span> <span class="kt">StdGen</span><span class="p">)</span> <span class="n">r</span>
-</pre></div>
-
-
-<p>This type represent a monad that can store a state with type s, like the state monad, and can generate random variables of type r, like the rand monad. In general we would have a type</p>
-<div class="highlight"><pre><span class="nf">foo2</span> <span class="ow">::</span><span class="p">(</span><span class="kt">MonadTrans</span> <span class="n">t</span><span class="p">,</span> <span class="kt">Monad</span> <span class="n">m</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">m</span> <span class="n">a</span>
-</pre></div>
-
-
-<p>In this case, <code>t = StateT s</code> and <code>m = Rand StdGen</code>. The class <code>MonadTrans</code> is defined in <code>Control.Monad.Trans</code>, and provides the function:</p>
-<div class="highlight"><pre><span class="nf">lift</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">MonadTrans</span> <span class="n">t</span><span class="p">,</span> <span class="kt">Monad</span> <span class="n">m</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">m</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">t</span> <span class="n">m</span> <span class="n">a</span>
-</pre></div>
-
-
-<p>In this case, <code>t</code> is itself a monad, and can be treated like one through the code. It works like this: inside a do expression you can use the <code>lift</code> function to access the inner monad. Things called with lift will operate in the inner monad. Things called without <code>lift</code> will operate in the outer monad.</p>
-<p>So, suppose we want to simulate this very simple process:</p>
-<div class="highlight"><pre>  \displaystyle x_{t+1} = x_{t} + \eta_t
-</pre></div>
-
-
-<p>where $\eta_t$ is drawn from a normal distribution. We would do:</p>
-<div class="highlight"><pre><span class="nf">randomWalk</span> <span class="ow">::</span> <span class="kt">StateT</span> <span class="kt">Double</span> <span class="p">(</span><span class="kt">Rand</span> <span class="kt">StdGen</span><span class="p">)</span> <span class="kt">Double</span>
-<span class="nf">randomWalk</span> <span class="ow">=</span> <span class="kr">do</span> <span class="n">eta</span> <span class="ow">&lt;-</span> <span class="n">lift</span> <span class="n">normal</span>
-                <span class="n">x</span> <span class="ow">&lt;-</span> <span class="n">get</span>
-                <span class="kr">let</span> <span class="n">x&#39;</span> <span class="ow">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">eta</span>
-                <span class="n">put</span> <span class="n">x&#39;</span>
-                <span class="n">return</span> <span class="n">x&#39;</span>
-<span class="nf">runWalk</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">StdGen</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span>
-<span class="nf">runWalk</span> <span class="n">n</span> <span class="n">x0</span> <span class="n">gen</span> <span class="ow">=</span> <span class="n">evalRand</span> <span class="p">(</span><span class="n">replicateM</span> <span class="n">n</span> <span class="o">$</span> <span class="n">evalStateT</span> <span class="n">randomWalk</span> <span class="n">x0</span><span class="p">)</span> <span class="n">gen</span>
-</pre></div>
-
-
-<p>The <code>evalStateT</code> function is just evalState adapted to run a StateT monad. Running this on ghci we get:</p>
-<div class="highlight"><pre> <span class="o">*</span><span class="kt">Main</span><span class="o">&gt;</span> <span class="n">runWalk</span> <span class="mi">5</span> <span class="mf">0.0</span> <span class="n">gen</span>
-<span class="p">[</span><span class="mf">0.1600255836730147</span><span class="p">,</span><span class="mf">0.1575360140445035</span><span class="p">,</span><span class="o">-</span><span class="mf">1.595627933129274</span><span class="p">,</span>
-<span class="o">-</span><span class="mf">0.18196791439834512</span><span class="p">,</span><span class="o">-</span><span class="mf">1.082222285056746</span><span class="p">]</span>
-</pre></div>
-
-
-<p>This is what we can accomplish: we can easily operate simultaneously with functions that expect a state monad, like put and get, we can unwrap things with <code>&lt;-</code> from the inner <code>Rand</code> monad by using <code>lift</code> , and we can return things to the state monad. We could have any monad inside the <code>StateT</code> transformer. For example, we could have another <code>State</code> monad. Here is a fancy implementation of the Fibonacci sequence using a <code>State</code> monad (that stores the last but one value in the sequence as its internal state) inside a <code>StateT</code> transfomer (that stores the last value of the sequence):</p>
-<div class="highlight"><pre><span class="nf">fancyFib</span> <span class="ow">::</span> <span class="kt">StateT</span> <span class="kt">Int</span> <span class="p">(</span><span class="kt">State</span> <span class="kt">Int</span><span class="p">)</span> <span class="kt">Int</span>
-<span class="nf">fancyFib</span> <span class="ow">=</span> <span class="kr">do</span> <span class="n">old</span> <span class="ow">&lt;-</span> <span class="n">lift</span> <span class="n">get</span>
-              <span class="n">new</span> <span class="ow">&lt;-</span> <span class="n">get</span>
-              <span class="kr">let</span> <span class="n">new&#39;</span> <span class="ow">=</span> <span class="n">new</span> <span class="o">+</span> <span class="n">old</span>
-                  <span class="n">old&#39;</span> <span class="ow">=</span> <span class="n">new</span>
-              <span class="n">lift</span> <span class="o">$</span> <span class="n">put</span> <span class="n">old&#39;</span>
-              <span class="n">put</span> <span class="n">new&#39;</span>
-              <span class="n">return</span> <span class="n">new</span>
-
-<span class="nf">fancyFibs</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">StateT</span> <span class="kt">Int</span> <span class="p">(</span><span class="kt">State</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span>
-<span class="nf">fancyFibs</span> <span class="n">n</span> <span class="ow">=</span> <span class="n">replicateM</span> <span class="n">n</span> <span class="n">fancyFibs</span>
-</pre></div>
-
-
-<p>And we can run this to get:</p>
-<div class="highlight"><pre><span class="o">*</span><span class="kt">Main</span><span class="o">&gt;</span> <span class="n">evalState</span> <span class="p">(</span><span class="n">evalStateT</span> <span class="p">(</span><span class="n">fancyFibs</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">0</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">55</span><span class="p">]</span>
-</pre></div>
+fancyFibs :: Int -&gt; StateT Int (State Int) [Int]
+fancyFibs n = replicateM n fancyFibs</code></pre>
+<p data-line="135"><span data-line="135"></span>And we can run this to get:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-haskell lang-haskell haskell" data-line="137" data-line-code="138" ><code data-line="138">*Main&gt; evalState (evalStateT (fancyFibs 10) 1) 0
+[1,1,2,3,5,8,13,21,34,55]</code></pre><span data-line=""></span>
   </div><!-- .content -->
 
 </section>
