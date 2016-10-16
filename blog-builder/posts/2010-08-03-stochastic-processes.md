@@ -17,9 +17,7 @@ import Control.Monad.Rand
 
 Now, stochastic processes have characteristics related to two different monads. In one hand, they are dynamical processes, and the way to implement dynamics in Haskell is with state monads. For example, if I want to iterate the logistic map:
 
-~ Equation {#logistic}
-  \displaystyle x_{t+1} = \alpha x_t\left(1-x_t\right)
-~
+$$x_{t+1} = \alpha x_t\left(1-x_t\right)$$
 
 I could do the following:
 
@@ -47,9 +45,7 @@ So we can make the loose correspondence: dynamical system ↔ state monad.
 
 On the other hand, stochastic processes are compositions of random variables, and this is done with the Rand monad (found in `Control.Monad.Random`). As an example, the Box-Muller formula tells us that, if I have two inpendent random variables $x$ and $y$, distributed uniformly between in the $[0, 1]$ interval, then, the expression:
 
-~ Equation {#box_muller}
-  \displaystyle \sqrt{-2\log(x)}\cos(2\pi y)
-~
+$$\sqrt{-2\log(x)}\cos(2\pi y)$$
 
 will be normally distributed. We can write then:
 
@@ -95,9 +91,7 @@ In this case, `t` is itself a monad, and can be treated like one through the cod
 
 So, suppose we want to simulate this very simple process:
 
-~ Equation {#random_walk}
-  \displaystyle x_{t+1} = x_{t} + \eta_t
-~
+$$x_{t+1} = x_{t} + \eta_t$$
 
 where $\eta_t$ is drawn from a normal distribution. We would do:
 
