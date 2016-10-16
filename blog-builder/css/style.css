@@ -1,0 +1,75 @@
+body {
+    font-family: 'Gentium Basic', serif;
+    color: black;
+    font-size: 20px;
+    margin: 0px auto 0px auto;
+    width: 100%;
+    text-align: justify;
+}
+
+code {
+    font-family: 'Inconsolata', monospace;
+    font-size: 18px;
+}
+
+a {
+    color: #082E2D;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+a:hover {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.post-title {
+    font-weight: bold;
+}
+
+.content {
+    margin: 0px auto 0px 150px;
+    width: 75%;
+    text-align: justify;
+}
+
+.info {
+    color: #555;
+    font-size: 18px;
+    text-align: right;
+    font-style: italic;
+}
+
+.footer {
+    border-top: 5px solid #FFFFEE;
+    color: #555555;
+    font-size: 16px;
+    margin-top: 30px;
+    padding: 12px 0px 12px 0px;
+    text-align: right;
+}
+
+.header {
+    border-bottom: 1px double black;
+    font-family: 'Shadows Into Light';
+    font-size: 32px;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+    margin: 20px auto auto 20px;
+}
+
+.header #logo {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.header #navigation {
+    text-align: right;
+    vertical-align: middle;
+    text-transform: uppercase;
+}

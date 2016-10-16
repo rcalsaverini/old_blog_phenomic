@@ -1,5 +1,7 @@
 ### Haskell ###
 blog-builder/.stack-work/
 
+
 ### Hakyll ###
 blog-builder/_site/
+blog-builder/_cache

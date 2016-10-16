@@ -1,6 +1,17 @@
+{-# LANGUAGE OverloadedStrings #-}
+
+
 module Main where
 
-import Data.Blog
+import           Blog.Rules
+import           Hakyll
+import Data.Monoid ((<>))
+
+config :: Configuration
+config = defaultConfiguration {deployCommand = "mv _site/* ..; git commit; git push"}
 
 main :: IO ()
-main = someFunc
+main = hakyllWith config $ do
+    staticFilesRules
+    postRules
+    indexRules
