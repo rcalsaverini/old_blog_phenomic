@@ -13,7 +13,9 @@ const PagesList = ({ pages }) => {
         <ul className={ styles.list }>
           {
           pages.map((page) => (
-            <li key={ page.title }><PagePreview { ...page } /></li>
+            <li key={ page.title }>
+              <PagePreview { ...page } />
+            </li>
           ))
         }
         </ul>

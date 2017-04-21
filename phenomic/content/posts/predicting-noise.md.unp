@@ -1,0 +1,11 @@
+---
+title: Unsupervised Learning by Predicting Noise
+subtitle: Quick comment inspired by a recent paper
+author: Rafael S. Calsaverini
+tags: Unsupervised Learning, Density Learning, Deep Learning
+date: 2017-04-21
+layout: Post
+hero: https://upload.wikimedia.org/wikipedia/commons/3/31/Portal_Math_Banner_Background_ka.jpg
+---
+
+This is a short comment about something that ocurred me while reading the recent paper Unsupervised Learning by Predicting Noise. Suppose we have a set of measurements of a variable $X$, which we assume were sampled from a distribution $p_{X}(x)$
